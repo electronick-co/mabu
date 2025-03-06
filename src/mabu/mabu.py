@@ -3,7 +3,7 @@
 
 import serial
 
-class mabu:
+class Mabu:
     """Main class for controlling the MABU robotic head"""
     
     def __init__(self, port="/dev/ttyUSB0"):
