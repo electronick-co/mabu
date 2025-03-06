@@ -7,8 +7,14 @@ To get more detaied documentation, go here: https://electronick-co.github.io/hac
 
 Connect a usb to serial adapter, or use in a raspberry pi.
 
-On the tops
+On the top board, disconnect the serial cable that comes from the tablet (black, white, and red), and solder the pins for connecting to the serial converter or the Raspberry Pi.
 
+![WhatsApp Image 2025-03-05 at 9 02 30 PM](https://github.com/user-attachments/assets/74f8dfa5-caef-4444-aa3e-a178850016dc)
+
+![WhatsApp Image 2025-03-05 at 9 01 57 PM](https://github.com/user-attachments/assets/c1007bb4-5c55-4116-97a3-f26234f11e7d)
+
+
+`py -m pip install mabu`
 
 ``` python
 from mabu import Mabu
