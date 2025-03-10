@@ -6,20 +6,31 @@ import serial
 class Mabu:
     """Main class for controlling the MABU robotic head"""
     
-    def __init__(self, port="/dev/ttyUSB0"):
+    def __init__(self, port="COM29", debug_mode=True):
         self.is_powered = False
         self.port = port
+        self.debug_mode = debug_mode
         self.ser = serial.Serial(self.port, 57600, timeout=1) 
-        
+    
+    def _send_command(self,command):
+        self.ser.write(command)
+        if self.debug_mode:
+            print(f"Command sent:{command}")
+    
+    def _read_response(self,expected_response=[]):
+        response = self.ser.read(len(expected_response))
+        print(f"command lenght {len(expected_response)}")
+        print(f"response: {response}")
+     
     def on(self):
         """Turn on the MABU robot"""
         try:
             # Construct the command fa 00 02 4f 7f 0b cb
             command = bytearray([0xfa, 0x00, 0x02, 0x4f, 0x7f, 0x0b, 0xcb])
             # Send the command
-            self.ser.write(command)
+            self._send_command(command)
             
-            #TODO check answer
+            self._read_response(command)
             
             self.is_powered = True
             print("MABU is powered on")
